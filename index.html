@@ -1,0 +1,1809 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lions, Unfiltered — A Columbia First-Year Survival Guide</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,200..800;1,6..72,200..800&family=IBM+Plex+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --paper: #F5F7FB;
+  --paper-deep: #E5EBF3;
+  --ink: #0E1B33;
+  --ink-soft: #2B3A5C;
+  --ink-mute: #4D5872;
+  --columbia: #6FA3C7;
+  --columbia-deep: #2E5F87;
+  --warning: #C53A1F;
+  --warning-bg: #F5DDD5;
+  --gold: #8B6920;
+  --line: #1A2A4A;
+  --rule: rgba(14,27,51,0.18);
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--paper);
+  color: var(--ink);
+  font-family: 'IBM Plex Sans', system-ui, sans-serif;
+  font-size: 16px;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  background-image:
+    radial-gradient(circle at 20% 10%, rgba(111,163,199,0.10) 0%, transparent 40%),
+    radial-gradient(circle at 80% 70%, rgba(46,95,135,0.06) 0%, transparent 50%);
+  min-height: 100vh;
+}
+
+/* Subtle grain texture overlay */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+  opacity: 0.4;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3'/%3E%3CfeColorMatrix values='0 0 0 0 0.06 0 0 0 0 0.1 0 0 0 0 0.2 0 0 0 0.08 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  mix-blend-mode: multiply;
+}
+
+main, header, nav, footer { position: relative; z-index: 2; }
+
+/* ========== TOP RIBBON ========== */
+.ribbon {
+  background: var(--ink);
+  color: var(--paper);
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 8px 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid var(--columbia);
+}
+.ribbon .live { display: flex; align-items: center; gap: 8px; }
+.ribbon .dot {
+  width: 6px; height: 6px; border-radius: 50%;
+  background: var(--columbia);
+  animation: pulse 2s infinite;
+}
+@keyframes pulse { 0%,100% { opacity: 1; } 50% { opacity: 0.4; } }
+
+/* ========== HEADER ========== */
+header {
+  padding: 48px 32px 24px;
+  border-bottom: 2px solid var(--ink);
+  position: relative;
+}
+header::after {
+  content: '';
+  position: absolute;
+  bottom: -7px;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: var(--ink);
+}
+
+.masthead {
+  max-width: 1320px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  gap: 32px;
+}
+.masthead-left {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+}
+.masthead-right {
+  text-align: right;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+}
+.title {
+  font-family: 'Newsreader', Georgia, serif;
+  font-weight: 600;
+  font-size: clamp(48px, 9vw, 120px);
+  line-height: 0.95;
+  letter-spacing: -0.035em;
+  text-align: center;
+  font-style: italic;
+  font-variation-settings: 'opsz' 72;
+}
+.title .amp {
+  font-style: italic;
+  color: var(--columbia-deep);
+  font-weight: 500;
+}
+
+.subtitle {
+  max-width: 1320px;
+  margin: 24px auto 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+.subtitle .tag {
+  font-family: 'Newsreader', Georgia, serif;
+  font-style: italic;
+  font-size: 22px;
+  font-weight: 400;
+  color: var(--ink-soft);
+  max-width: 600px;
+}
+.subtitle .meta {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--ink-mute);
+}
+
+/* ========== NAV ========== */
+nav.section-nav {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: var(--paper);
+  border-bottom: 1px solid var(--rule);
+  backdrop-filter: blur(8px);
+  background: rgba(245,247,251,0.95);
+}
+.nav-inner {
+  max-width: 1320px;
+  margin: 0 auto;
+  padding: 12px 32px;
+  display: flex;
+  gap: 24px;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+.nav-inner::-webkit-scrollbar { display: none; }
+.nav-inner a {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+  text-decoration: none;
+  white-space: nowrap;
+  padding: 6px 0;
+  border-bottom: 1px solid transparent;
+  transition: all 0.2s ease;
+}
+.nav-inner a:hover { color: var(--columbia-deep); border-bottom-color: var(--columbia-deep); }
+
+/* ========== SECTIONS ========== */
+section { padding: 64px 32px; max-width: 1320px; margin: 0 auto; }
+
+.section-head {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  align-items: end;
+  gap: 24px;
+  margin-bottom: 40px;
+  border-bottom: 1px solid var(--rule);
+  padding-bottom: 16px;
+}
+.section-num {
+  font-family: 'Newsreader', Georgia, serif;
+  font-style: italic;
+  font-weight: 300;
+  font-size: 80px;
+  line-height: 0.8;
+  color: var(--columbia-deep);
+  
+}
+.section-title-wrap h2 {
+  font-family: 'Newsreader', Georgia, serif;
+  font-weight: 500;
+  font-style: italic;
+  font-size: clamp(32px, 5vw, 56px);
+  line-height: 1;
+  letter-spacing: -0.025em;
+  color: var(--ink);
+}
+.section-kicker {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--ink-mute);
+  margin-bottom: 8px;
+}
+
+/* ========== EMERGENCY QUICK CONTACTS ========== */
+.emergency {
+  background: var(--ink);
+  color: var(--paper);
+  border-radius: 4px;
+  padding: 32px;
+  margin-bottom: 48px;
+  position: relative;
+  overflow: hidden;
+}
+.emergency::before {
+  content: 'IF SOMETHING GOES WRONG';
+  position: absolute;
+  top: 12px;
+  right: 16px;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 9px;
+  letter-spacing: 0.25em;
+  color: var(--columbia);
+  opacity: 0.6;
+}
+.emergency h3 {
+  font-family: 'Newsreader', Georgia, serif;
+  font-style: italic;
+  font-weight: 400;
+  font-size: 32px;
+  margin-bottom: 8px;
+  color: var(--paper);
+}
+.emergency .sub {
+  font-family: 'Newsreader', Georgia, serif;
+  font-style: italic;
+  color: var(--columbia);
+  margin-bottom: 24px;
+  font-size: 16px;
+}
+.emergency-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1px;
+  background: rgba(255,255,255,0.1);
+  margin-top: 16px;
+}
+.emergency-item {
+  background: var(--ink);
+  padding: 20px;
+}
+.emergency-item .label {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--columbia);
+  margin-bottom: 6px;
+  display: block;
+}
+.emergency-item .name {
+  font-family: 'Newsreader', Georgia, serif;
+  font-style: italic;
+  font-size: 16px;
+  margin-bottom: 8px;
+  color: var(--paper);
+}
+.emergency-item .number {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 18px;
+  font-weight: 500;
+  color: var(--paper);
+  text-decoration: none;
+  display: block;
+  border-bottom: 1px dashed rgba(255,255,255,0.3);
+  padding-bottom: 4px;
+  transition: color 0.2s;
+}
+.emergency-item .number:hover { color: var(--columbia); }
+.emergency-item .note {
+  font-size: 12px;
+  color: rgba(255,255,255,0.6);
+  margin-top: 6px;
+  font-style: italic;
+}
+
+/* ========== SEARCH & FILTER ========== */
+.search-block {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-bottom: 32px;
+}
+.search-input {
+  width: 100%;
+  background: transparent;
+  border: none;
+  border-bottom: 2px solid var(--ink);
+  padding: 16px 0 16px 40px;
+  font-family: 'Newsreader', Georgia, serif;
+  font-style: italic;
+  font-size: clamp(20px, 3vw, 32px);
+  color: var(--ink);
+  outline: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%230E1B33' stroke-width='1.5'%3E%3Ccircle cx='11' cy='11' r='8'/%3E%3Cpath d='m21 21-4.3-4.3'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: 4px center;
+  background-size: 24px;
+}
+.search-input::placeholder { color: var(--ink-mute); font-style: italic; }
+.filter-tags {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+.filter-tag {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  padding: 6px 14px;
+  border: 1px solid var(--ink-soft);
+  background: transparent;
+  color: var(--ink-soft);
+  cursor: pointer;
+  border-radius: 999px;
+  transition: all 0.2s;
+}
+.filter-tag:hover { border-color: var(--ink); color: var(--ink); }
+.filter-tag.active {
+  background: var(--ink);
+  color: var(--paper);
+  border-color: var(--ink);
+}
+
+/* ========== RESOURCE GRID ========== */
+.resource-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 1px;
+  background: var(--rule);
+  border: 1px solid var(--rule);
+}
+.resource {
+  background: var(--paper);
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  transition: background 0.2s;
+}
+.resource:hover { background: var(--paper-deep); }
+.resource .cat-tag {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 9px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--columbia-deep);
+  align-self: flex-start;
+  border-bottom: 1px solid var(--columbia-deep);
+  padding-bottom: 2px;
+}
+.resource h4 {
+  font-family: 'Newsreader', Georgia, serif;
+  font-weight: 500;
+  font-style: italic;
+  font-size: 22px;
+  line-height: 1.15;
+  letter-spacing: -0.01em;
+  color: var(--ink);
+}
+.resource p {
+  font-size: 14px;
+  color: var(--ink-soft);
+  line-height: 1.55;
+}
+.resource .contact {
+  margin-top: auto;
+  padding-top: 12px;
+  border-top: 1px dashed var(--rule);
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.resource .contact a {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 12px;
+  color: var(--ink);
+  text-decoration: none;
+  border-bottom: 1px solid var(--ink-mute);
+  align-self: flex-start;
+  padding-bottom: 1px;
+}
+.resource .contact a:hover { color: var(--columbia-deep); border-color: var(--columbia-deep); }
+.resource .hours {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  color: var(--ink-mute);
+  text-transform: uppercase;
+}
+
+/* ========== HOW DO I (FAQ) ========== */
+.howdo-list {
+  display: flex;
+  flex-direction: column;
+  border-top: 1px solid var(--ink);
+}
+.howdo {
+  border-bottom: 1px solid var(--rule);
+  cursor: pointer;
+  padding: 20px 0;
+  transition: padding 0.3s;
+}
+.howdo summary {
+  list-style: none;
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: 24px;
+  cursor: pointer;
+}
+.howdo summary::-webkit-details-marker { display: none; }
+.howdo .qnum {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 11px;
+  color: var(--ink-mute);
+  letter-spacing: 0.1em;
+}
+.howdo .q {
+  font-family: 'Newsreader', Georgia, serif;
+  font-style: italic;
+  font-size: clamp(20px, 2.5vw, 30px);
+  font-weight: 400;
+  letter-spacing: -0.015em;
+  color: var(--ink);
+  line-height: 1.2;
+}
+.howdo .toggle {
+  font-family: 'Newsreader', Georgia, serif;
+  font-style: italic;
+  font-size: 32px;
+  color: var(--columbia-deep);
+  transition: transform 0.3s;
+  font-weight: 300;
+}
+.howdo[open] .toggle { transform: rotate(45deg); }
+.howdo .a {
+  margin-top: 16px;
+  margin-left: 60px;
+  font-size: 16px;
+  line-height: 1.65;
+  color: var(--ink-soft);
+  max-width: 720px;
+}
+.howdo .a a {
+  color: var(--columbia-deep);
+  text-decoration: underline;
+  text-decoration-style: dotted;
+  text-underline-offset: 3px;
+}
+.howdo .a strong { color: var(--ink); font-weight: 600; }
+
+/* ========== ROADMAPS ========== */
+.roadmaps {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+  gap: 24px;
+}
+.roadmap {
+  background: #FFFFFF;
+  border: 1px solid var(--rule);
+  padding: 28px;
+  position: relative;
+  transition: transform 0.3s, box-shadow 0.3s;
+  box-shadow: 0 1px 2px rgba(14,27,51,0.04);
+}
+.roadmap:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 4px 4px 0 var(--ink);
+}
+.roadmap .icon {
+  font-family: 'Newsreader', Georgia, serif;
+  font-style: italic;
+  font-size: 48px;
+  font-weight: 300;
+  color: var(--columbia-deep);
+  line-height: 1;
+  margin-bottom: 12px;
+}
+.roadmap h3 {
+  font-family: 'Newsreader', Georgia, serif;
+  font-weight: 500;
+  font-style: italic;
+  font-size: 28px;
+  letter-spacing: -0.02em;
+  color: var(--ink);
+  margin-bottom: 4px;
+}
+.roadmap .blurb {
+  font-size: 14px;
+  color: var(--ink-soft);
+  margin-bottom: 20px;
+  line-height: 1.5;
+}
+.roadmap .timeline {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 20px;
+  padding-left: 16px;
+  border-left: 2px solid var(--columbia);
+}
+.roadmap .step {
+  position: relative;
+  padding-left: 8px;
+}
+.roadmap .step::before {
+  content: '';
+  position: absolute;
+  left: -22px;
+  top: 8px;
+  width: 8px;
+  height: 8px;
+  background: #FFFFFF;
+  border: 2px solid var(--columbia-deep);
+  border-radius: 50%;
+}
+.roadmap .step .yr {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--columbia-deep);
+  font-weight: 500;
+}
+.roadmap .step .what {
+  font-size: 14px;
+  color: var(--ink);
+  line-height: 1.4;
+}
+.roadmap .clubs {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding-top: 16px;
+  border-top: 1px dashed var(--rule);
+}
+.roadmap .clubs-label {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--ink-mute);
+  margin-bottom: 4px;
+}
+.roadmap .club-item {
+  font-size: 13px;
+  color: var(--ink);
+  display: flex;
+  gap: 8px;
+  align-items: baseline;
+}
+.roadmap .club-item .arrow {
+  color: var(--gold);
+  font-family: 'Newsreader', Georgia, serif;
+  font-style: italic;
+}
+.roadmap .club-item a {
+  color: var(--ink);
+  text-decoration: none;
+  border-bottom: 1px dotted var(--columbia-deep);
+  padding-bottom: 1px;
+  transition: color 0.2s, border-color 0.2s;
+}
+.roadmap .club-item a:hover {
+  color: var(--columbia-deep);
+  border-bottom-style: solid;
+}
+.roadmap .club-item .desc {
+  color: var(--ink-mute);
+  font-size: 12px;
+  font-style: italic;
+}
+
+/* ========== INSIDER NOTES — STICKY NOTE STYLE ========== */
+.notes {
+  background: var(--columbia-deep);
+  color: var(--paper);
+  padding: 56px 32px 80px;
+  margin: 64px -32px;
+  border-top: 1px solid var(--ink);
+  border-bottom: 1px solid var(--ink);
+  position: relative;
+  overflow: hidden;
+}
+.notes::before {
+  /* subtle "corkboard" warmth — very faint dot pattern in the background */
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(rgba(255,255,255,0.04) 1px, transparent 1px);
+  background-size: 16px 16px;
+  pointer-events: none;
+}
+.notes-inner {
+  max-width: 1320px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 2;
+}
+.notes h2 {
+  font-family: 'Newsreader', Georgia, serif;
+  font-style: italic;
+  font-weight: 500;
+  font-size: clamp(32px, 5vw, 52px);
+  letter-spacing: -0.025em;
+  margin-bottom: 48px;
+  color: var(--paper);
+}
+.notes-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 44px 28px;
+  padding-top: 16px;
+}
+.notes-grid .note {
+  background: #FFFFFF;
+  color: var(--ink);
+  padding: 36px 24px 26px;
+  border-radius: 2px;
+  position: relative;
+  box-shadow:
+    0 1px 2px rgba(0,0,0,0.22),
+    0 10px 28px rgba(0,0,0,0.18);
+  transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.35s;
+  border-left: none;
+}
+/* alternating subtle rotations — feels pinned by hand */
+.notes-grid .note:nth-child(1) { transform: rotate(-0.7deg); }
+.notes-grid .note:nth-child(2) { transform: rotate(0.5deg); }
+.notes-grid .note:nth-child(3) { transform: rotate(-0.3deg); }
+.notes-grid .note:nth-child(4) { transform: rotate(0.8deg); }
+.notes-grid .note:nth-child(5) { transform: rotate(-0.5deg); }
+.notes-grid .note:nth-child(6) { transform: rotate(0.4deg); }
+.notes-grid .note:nth-child(7) { transform: rotate(-0.6deg); }
+.notes-grid .note:nth-child(8) { transform: rotate(0.3deg); }
+
+.notes-grid .note:hover {
+  transform: rotate(0deg) translateY(-3px);
+  box-shadow:
+    0 2px 4px rgba(0,0,0,0.3),
+    0 18px 44px rgba(0,0,0,0.28);
+  z-index: 5;
+}
+
+/* Washi tape across the top — slight rotation, varying colors */
+.notes-grid .note::before {
+  content: '';
+  position: absolute;
+  top: -11px;
+  left: 50%;
+  width: 96px;
+  height: 22px;
+  background-color: rgba(111, 163, 199, 0.82);
+  background-image:
+    linear-gradient(90deg, rgba(255,255,255,0.18) 0%, transparent 50%, rgba(255,255,255,0.1) 100%),
+    repeating-linear-gradient(90deg, transparent 0 6px, rgba(0,0,0,0.04) 6px 7px);
+  box-shadow: 0 1px 3px rgba(0,0,0,0.18);
+}
+/* Cycle four tape colors — Columbia blue, soft white, coral, sage */
+.notes-grid .note:nth-child(1)::before { transform: translateX(-50%) rotate(-3deg); background-color: rgba(111, 163, 199, 0.85); }
+.notes-grid .note:nth-child(2)::before { transform: translateX(-50%) rotate(2.5deg); background-color: rgba(245, 245, 240, 0.92); }
+.notes-grid .note:nth-child(3)::before { transform: translateX(-50%) rotate(-1deg); background-color: rgba(232, 169, 138, 0.72); }
+.notes-grid .note:nth-child(4)::before { transform: translateX(-50%) rotate(2deg); background-color: rgba(155, 178, 145, 0.72); }
+.notes-grid .note:nth-child(5)::before { transform: translateX(-50%) rotate(-2.5deg); background-color: rgba(245, 245, 240, 0.92); }
+.notes-grid .note:nth-child(6)::before { transform: translateX(-50%) rotate(1.5deg); background-color: rgba(111, 163, 199, 0.85); }
+.notes-grid .note:nth-child(7)::before { transform: translateX(-50%) rotate(-2deg); background-color: rgba(232, 169, 138, 0.72); }
+.notes-grid .note:nth-child(8)::before { transform: translateX(-50%) rotate(2.5deg); background-color: rgba(155, 178, 145, 0.72); }
+
+.notes-grid .note .num {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 11px;
+  color: var(--columbia-deep);
+  letter-spacing: 0.22em;
+  margin-bottom: 12px;
+  display: block;
+  font-weight: 600;
+}
+.notes-grid .note p {
+  font-family: 'Newsreader', Georgia, serif;
+  font-style: italic;
+  font-size: 16px;
+  line-height: 1.55;
+  color: var(--ink);
+}
+.notes-grid .note p strong {
+  font-style: normal;
+  font-family: 'IBM Plex Sans', sans-serif;
+  font-weight: 600;
+  font-size: 13.5px;
+  background: rgba(111, 163, 199, 0.45);
+  color: var(--ink);
+  padding: 1px 6px;
+  border-radius: 2px;
+  letter-spacing: 0.005em;
+}
+.notes-grid .note p a {
+  color: var(--columbia-deep);
+  text-decoration: none;
+  border-bottom: 1px dotted var(--columbia-deep);
+  padding-bottom: 1px;
+  transition: border-bottom-style 0.2s;
+}
+.notes-grid .note p a:hover { border-bottom-style: solid; }
+.notes-grid .note p strong a {
+  color: var(--ink);
+  border-bottom: 1px dotted rgba(14,27,51,0.6);
+  font-weight: 600;
+}
+.notes-grid .note p strong a:hover { border-bottom-style: solid; border-bottom-color: var(--ink); }
+
+/* ========== FOOTER ========== */
+footer {
+  border-top: 2px solid var(--ink);
+  padding: 48px 32px 24px;
+  margin-top: 80px;
+}
+.footer-inner {
+  max-width: 1320px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  gap: 40px;
+}
+.footer-mast {
+  font-family: 'Newsreader', Georgia, serif;
+  font-style: italic;
+  font-size: 28px;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  color: var(--ink);
+}
+.footer-col h5 {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--ink-mute);
+  margin-bottom: 12px;
+}
+.footer-col a {
+  display: block;
+  color: var(--ink);
+  text-decoration: none;
+  font-size: 14px;
+  padding: 4px 0;
+  border-bottom: 1px solid transparent;
+}
+.footer-col a:hover { border-bottom-color: var(--columbia-deep); color: var(--columbia-deep); }
+.colophon {
+  max-width: 1320px;
+  margin: 32px auto 0;
+  padding-top: 16px;
+  border-top: 1px solid var(--rule);
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 16px;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--ink-mute);
+}
+
+.no-results {
+  grid-column: 1 / -1;
+  padding: 60px;
+  text-align: center;
+  font-family: 'Newsreader', Georgia, serif;
+  font-style: italic;
+  font-size: 22px;
+  color: var(--ink-mute);
+}
+
+/* ========== ROADMAP DISCLAIMER ========== */
+.roadmap-disclaimer {
+  border-left: 3px solid var(--gold);
+  background: rgba(139,105,32,0.05);
+  padding: 24px 28px;
+  margin-bottom: 32px;
+  max-width: 900px;
+}
+.roadmap-disclaimer p {
+  font-family: 'Newsreader', Georgia, serif;
+  font-size: 17px;
+  line-height: 1.6;
+  color: var(--ink-soft);
+  font-weight: 400;
+}
+.roadmap-disclaimer em {
+  font-style: italic;
+  color: var(--ink);
+  font-weight: 500;
+}
+.roadmap-disclaimer .ex {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 12px;
+  background: var(--paper-deep);
+  padding: 2px 8px;
+  border-radius: 2px;
+  color: var(--ink);
+  font-style: normal;
+  margin: 0 2px;
+  white-space: nowrap;
+}
+
+/* ========== GOVERNANCE / DEANS ========== */
+.gov-split {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 48px;
+}
+.gov-h {
+  font-family: 'Newsreader', Georgia, serif;
+  font-style: italic;
+  font-weight: 500;
+  font-size: 30px;
+  letter-spacing: -0.02em;
+  margin-bottom: 8px;
+  color: var(--ink);
+}
+.gov-note {
+  font-family: 'Newsreader', Georgia, serif;
+  font-style: italic;
+  font-size: 15px;
+  color: var(--ink-soft);
+  margin-bottom: 24px;
+  max-width: 460px;
+  line-height: 1.5;
+}
+.gov-list {
+  display: flex;
+  flex-direction: column;
+}
+.gov-item {
+  padding: 16px 0;
+  border-top: 1px solid var(--rule);
+}
+.gov-item:last-child { border-bottom: 1px solid var(--rule); }
+.gov-self {
+  background: rgba(111,163,199,0.1);
+  margin: 0 -12px;
+  padding: 16px 12px;
+  border-top: 2px solid var(--columbia-deep);
+  border-bottom: 2px solid var(--columbia-deep);
+}
+.gov-role {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--ink-mute);
+  margin-bottom: 4px;
+}
+.gov-self .gov-role {
+  color: var(--columbia-deep);
+  font-weight: 500;
+}
+.gov-name {
+  font-family: 'Newsreader', Georgia, serif;
+  font-style: italic;
+  font-size: 19px;
+  color: var(--ink);
+  margin-bottom: 4px;
+  font-weight: 500;
+}
+.gov-name .since {
+  font-size: 12px;
+  color: var(--ink-mute);
+  font-style: italic;
+  font-family: 'IBM Plex Sans', sans-serif;
+  font-weight: 400;
+}
+.gov-desc {
+  font-size: 13px;
+  color: var(--ink-soft);
+  line-height: 1.5;
+  margin-bottom: 6px;
+}
+.gov-link a {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 11px;
+  color: var(--columbia-deep);
+  text-decoration: none;
+  border-bottom: 1px dashed var(--columbia-deep);
+}
+.gov-link a:hover { color: var(--ink); border-color: var(--ink); }
+
+/* ========== RESPONSIVE ========== */
+@media (max-width: 768px) {
+  header { padding: 32px 20px 20px; }
+  section { padding: 48px 20px; }
+  .masthead { grid-template-columns: 1fr; gap: 12px; }
+  .masthead-left, .masthead-right { text-align: center; }
+  .footer-inner { grid-template-columns: 1fr; }
+  .nav-inner { padding: 12px 20px; gap: 18px; }
+  .section-head { grid-template-columns: 1fr; gap: 8px; align-items: start; }
+  .section-num { font-size: 56px; }
+  .emergency { padding: 24px; margin: 0 -8px 32px; }
+  .notes { padding: 40px 20px; margin: 48px -20px; }
+  .howdo .a { margin-left: 0; }
+  .howdo summary { gap: 12px; }
+  .gov-split { grid-template-columns: 1fr; gap: 40px; }
+}
+
+/* ========== SCROLL PROGRESS BAR ========== */
+.scroll-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: var(--columbia-deep);
+  transform: scaleX(0);
+  transform-origin: left center;
+  z-index: 100;
+  pointer-events: none;
+  will-change: transform;
+}
+
+/* ========== CUSTOM CURSOR ========== */
+.cursor-dot {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 10px;
+  height: 10px;
+  background: #FFFFFF;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 9999;
+  mix-blend-mode: difference;
+  margin: -5px 0 0 -5px;
+  transform: translate3d(-100px, -100px, 0);
+  transition: width 0.28s cubic-bezier(0.16, 1, 0.3, 1),
+              height 0.28s cubic-bezier(0.16, 1, 0.3, 1),
+              margin 0.28s cubic-bezier(0.16, 1, 0.3, 1),
+              opacity 0.2s;
+  will-change: transform;
+}
+.cursor-dot.cursor-hover {
+  width: 36px;
+  height: 36px;
+  margin: -18px 0 0 -18px;
+}
+.cursor-dot.cursor-hidden { opacity: 0; }
+
+@media (hover: none), (pointer: coarse) {
+  .cursor-dot { display: none; }
+}
+
+/* ========== SCROLL REVEAL ========== */
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.85s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.85s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform;
+}
+.reveal.in-view {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.stagger-children > * {
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity 0.65s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.65s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.stagger-children.in-view > * {
+  opacity: 1;
+  transform: translateY(0);
+}
+.stagger-children.in-view > *:nth-child(1) { transition-delay: 0s; }
+.stagger-children.in-view > *:nth-child(2) { transition-delay: 0.05s; }
+.stagger-children.in-view > *:nth-child(3) { transition-delay: 0.10s; }
+.stagger-children.in-view > *:nth-child(4) { transition-delay: 0.15s; }
+.stagger-children.in-view > *:nth-child(5) { transition-delay: 0.20s; }
+.stagger-children.in-view > *:nth-child(6) { transition-delay: 0.25s; }
+.stagger-children.in-view > *:nth-child(7) { transition-delay: 0.30s; }
+.stagger-children.in-view > *:nth-child(8) { transition-delay: 0.35s; }
+.stagger-children.in-view > *:nth-child(9) { transition-delay: 0.40s; }
+.stagger-children.in-view > *:nth-child(10) { transition-delay: 0.45s; }
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal,
+  .stagger-children > * {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+  .cursor-dot { display: none; }
+}
+</style>
+</head>
+<body>
+
+<div class="scroll-progress" id="scrollProgress"></div>
+<div class="cursor-dot" id="cursorDot"></div>
+
+<div class="ribbon">
+  <div class="live"><span class="dot"></span>You are here · 116th &amp; Broadway</div>
+  <div>For students of CC · SEAS · GS · Barnard</div>
+</div>
+
+<header>
+  <div class="masthead">
+    <div class="masthead-left">Vol. 1 · Iss. 01<br>Pub. by your CCSC</div>
+    <h1 class="title">Lions, <span class="amp">unfiltered</span></h1>
+    <div class="masthead-right">A Field Guide<br>to Year One</div>
+  </div>
+  <div class="subtitle">
+    <p class="tag">Every number you'll need at 2 a.m., every club worth your time, and every form that's easier to find here than buried on a department page.</p>
+    <span class="meta">Search · Browse · Bookmark</span>
+  </div>
+</header>
+
+<nav class="section-nav">
+  <div class="nav-inner">
+    <a href="#emergency">→ Emergencies</a>
+    <a href="#directory">→ Directory</a>
+    <a href="#howdo">→ How do I…</a>
+    <a href="#insider">→ Insider Notes</a>
+    <a href="#governance">→ Deans &amp; Councils</a>
+    <a href="#roadmaps">→ Roadmaps</a>
+  </div>
+</nav>
+
+<!-- ============ EMERGENCY / QUICK CONTACTS ============ -->
+<section id="emergency" class="reveal">
+  <div class="section-head">
+    <span class="section-num">01</span>
+    <div class="section-title-wrap">
+      <p class="section-kicker">Save these to your phone</p>
+      <h2>If something goes <em>wrong</em>.</h2>
+    </div>
+  </div>
+
+  <div class="emergency">
+    <h3>The four numbers to put in your phone tonight.</h3>
+    <p class="sub">Worth saving before classes start.</p>
+    <div class="emergency-grid">
+      <div class="emergency-item">
+        <span class="label">▸ On-Campus Emergency</span>
+        <div class="name">Public Safety (Emergency)</div>
+        <a class="number" href="tel:2128545555">212-854-5555</a>
+        <p class="note">24/7. Call before 911 on campus — they coordinate with NYPD/EMS.</p>
+      </div>
+      <div class="emergency-item">
+        <span class="label">▸ Locked Out / Non-Urgent</span>
+        <div class="name">Public Safety (Main)</div>
+        <a class="number" href="tel:2128542797">212-854-2797</a>
+        <p class="note">Lost CUID, suspicious activity, escorts, general questions.</p>
+      </div>
+      <div class="emergency-item">
+        <span class="label">▸ Mental Health 24/7</span>
+        <div class="name">CPS — Counseling &amp; Psych Services</div>
+        <a class="number" href="tel:2128542878">212-854-2878</a>
+        <p class="note">After hours, follow the prompts to reach a clinician on call.</p>
+      </div>
+      <div class="emergency-item">
+        <span class="label">▸ Sexual Violence / IPV Support</span>
+        <div class="name">SVR 24-Hour Helpline</div>
+        <a class="number" href="tel:2128544357">212-854-HELP (4357)</a>
+        <p class="note">Confidential. 24/7/365. For survivors and co-survivors.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ RESOURCE DIRECTORY ============ -->
+<section id="directory" class="reveal">
+  <div class="section-head">
+    <span class="section-num">02</span>
+    <div class="section-title-wrap">
+      <p class="section-kicker">Filter / search / find</p>
+      <h2>The <em>directory</em>.</h2>
+    </div>
+  </div>
+
+  <div class="search-block">
+    <input type="text" id="search" class="search-input" placeholder="Search resources — try ‘printer’, ‘food’, ‘therapy’…">
+    <div class="filter-tags" id="filterTags">
+      <button class="filter-tag active" data-filter="all">All</button>
+      <button class="filter-tag" data-filter="health">Health &amp; Wellness</button>
+      <button class="filter-tag" data-filter="housing">Housing &amp; Dining</button>
+      <button class="filter-tag" data-filter="academic">Academic</button>
+      <button class="filter-tag" data-filter="career">Career &amp; Money</button>
+      <button class="filter-tag" data-filter="safety">Safety &amp; ID</button>
+      <button class="filter-tag" data-filter="identity">Identity &amp; Community</button>
+      <button class="filter-tag" data-filter="tech">Tech &amp; Library</button>
+      <button class="filter-tag" data-filter="global">Global &amp; Abroad</button>
+    </div>
+  </div>
+
+  <div class="resource-grid stagger-children" id="resourceGrid">
+    <!-- Cards rendered by JS -->
+  </div>
+</section>
+
+<!-- ============ HOW DO I... ============ -->
+<section id="howdo" class="reveal">
+  <div class="section-head">
+    <span class="section-num">03</span>
+    <div class="section-title-wrap">
+      <p class="section-kicker">The questions you won't ask out loud</p>
+      <h2>How do I <em>actually</em>…</h2>
+    </div>
+  </div>
+
+  <div class="howdo-list stagger-children" id="howdoList">
+    <!-- Populated by JS -->
+  </div>
+</section>
+
+<!-- ============ INSIDER NOTES ============ -->
+<div class="notes reveal" id="insider">
+  <div class="notes-inner">
+    <h2>Things upperclassmen wish they'd <em>known sooner.</em></h2>
+    <div class="notes-grid stagger-children">
+      <div class="note">
+        <div class="num">№ 01</div>
+        <p>The first <strong><a href="https://www.housing.columbia.edu/content/room-and-suite-access" target="_blank">key assist</a></strong> per semester is free. After that, they're $20 each.</p>
+      </div>
+      <div class="note">
+        <div class="num">№ 02</div>
+        <p>Sophomore-summer finance recruiting starts <strong>fall of sophomore year</strong>. If that's your path, treat freshman year as prep.</p>
+      </div>
+      <div class="note">
+        <div class="num">№ 03</div>
+        <p><a href="https://www.health.columbia.edu/content/counseling-drop-visits" target="_blank">CPS drop-ins</a> are <strong>actually</strong> drop-in. You don't need an appointment to be seen the same day.</p>
+      </div>
+      <div class="note">
+        <div class="num">№ 04</div>
+        <p>The <strong><a href="https://perec.columbia.edu/swim-test" target="_blank">swim test</a></strong> is real. So is the PE requirement. Knock them out early — fewer headaches later.</p>
+      </div>
+      <div class="note">
+        <div class="num">№ 05</div>
+        <p>Use <a href="https://dining.columbia.edu/content/flex" target="_blank">Flex</a> at the <strong>off-campus</strong> grocery and pharmacy partners. It's basically money.</p>
+      </div>
+      <div class="note">
+        <div class="num">№ 06</div>
+        <p>Your <strong><a href="https://www.cc-seas.columbia.edu/csa" target="_blank">CSA advisor</a></strong> can help with registration holds, AP credit issues, and most administrative obstacles. Email them.</p>
+      </div>
+      <div class="note">
+        <div class="num">№ 07</div>
+        <p><a href="https://library.columbia.edu/libraries/butler.html" target="_blank">Butler</a> is open <strong>24/7</strong> during the semester. Use it well — and remember to sleep.</p>
+      </div>
+      <div class="note">
+        <div class="num">№ 08</div>
+        <p>Get on the Public Safety <strong><a href="https://ssol.columbia.edu" target="_blank">text alert system</a></strong> via SSOL. You'll know about closures, weather, and incidents first.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ============ DEANS & GOVERNANCE ============ -->
+<section id="governance" class="reveal">
+  <div class="section-head">
+    <span class="section-num">04</span>
+    <div class="section-title-wrap">
+      <p class="section-kicker">Who runs what · who to email</p>
+      <h2><em>Deans &amp; Councils.</em></h2>
+    </div>
+  </div>
+
+  <div class="gov-split">
+    <div class="gov-col">
+      <h3 class="gov-h">Deans &amp; key administrators</h3>
+      <p class="gov-note">When CSA can't fix it, these are the people who can. Most respond to undergraduate emails.</p>
+      <div class="gov-list stagger-children">
+        <div class="gov-item">
+          <div class="gov-role">Dean of Columbia College &amp; VP for Undergraduate Education</div>
+          <div class="gov-name">Josef Sorett</div>
+          <div class="gov-link"><a href="https://www.college.columbia.edu/dean">college.columbia.edu/dean</a></div>
+        </div>
+        <div class="gov-item">
+          <div class="gov-role">Dean of Engineering (SEAS)</div>
+          <div class="gov-name">Shih-Fu Chang</div>
+          <div class="gov-link"><a href="https://www.engineering.columbia.edu/about/dean">engineering.columbia.edu/about/dean</a></div>
+        </div>
+        <div class="gov-item">
+          <div class="gov-role">Dean of Undergraduate Student Life (CC + SEAS)</div>
+          <div class="gov-name">Kamala C. Kiem <span class="since">(since July 2025)</span></div>
+          <div class="gov-link"><a href="https://www.cc-seas.columbia.edu/studentlife/USLdean">USL dean page</a></div>
+        </div>
+        <div class="gov-item">
+          <div class="gov-role">Associate Dean of Undergraduate Student Life · Exec Director, Residential Life</div>
+          <div class="gov-name">Tara Hanna</div>
+          <div class="gov-link"><a href="https://reslife.columbia.edu">reslife.columbia.edu</a></div>
+        </div>
+        <div class="gov-item">
+          <div class="gov-role">Associate Dean of Community and Culture</div>
+          <div class="gov-name">Jonathon Kahn</div>
+          <div class="gov-link"><a href="https://universitylife.columbia.edu">universitylife.columbia.edu</a></div>
+        </div>
+        <div class="gov-item">
+          <div class="gov-role">Berick Center for Student Advising · Dean</div>
+          <div class="gov-name">Andrew Plaa</div>
+          <div class="gov-link"><a href="https://www.cc-seas.columbia.edu/csa">cc-seas.columbia.edu/csa</a></div>
+        </div>
+        <div class="gov-item">
+          <div class="gov-role">EVP, University Life &amp; Well-Being</div>
+          <div class="gov-name">Melanie Bernitz, M.D., M.P.H.</div>
+          <div class="gov-link"><a href="https://universitylife.columbia.edu">universitylife.columbia.edu</a></div>
+        </div>
+        <div class="gov-item">
+          <div class="gov-role">Dean of General Studies</div>
+          <div class="gov-name">Lisa Rosen-Metsch</div>
+          <div class="gov-link"><a href="https://www.gs.columbia.edu">gs.columbia.edu</a></div>
+        </div>
+        <div class="gov-item">
+          <div class="gov-role">Center for Career Education · Executive Director</div>
+          <div class="gov-name">CCE Leadership</div>
+          <div class="gov-link"><a href="https://www.careereducation.columbia.edu/about/our-team">careereducation.columbia.edu/about</a></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="gov-col">
+      <h3 class="gov-h">Student governance</h3>
+      <p class="gov-note">All elected. All open to non-elected students who want to show up. Meetings are public unless otherwise stated.</p>
+      <div class="gov-list stagger-children">
+        <div class="gov-item gov-self">
+          <div class="gov-role">▸ Your CCSC</div>
+          <div class="gov-name">Columbia College Student Council</div>
+          <div class="gov-desc">Represents CC undergrads. Sets policy, allocates funding, runs class councils, sends senators. Sundays 8pm in the Satow Room (Lerner 5). Open to all.</div>
+          <div class="gov-link"><a href="mailto:ccsc@columbia.edu">ccsc@columbia.edu</a></div>
+        </div>
+        <div class="gov-item">
+          <div class="gov-role">Engineering Student Council</div>
+          <div class="gov-name">ESC</div>
+          <div class="gov-desc">SEAS counterpart to CCSC. Class councils + reps-at-large + exec board. Runs ESC Project Grants for student engineering work.</div>
+          <div class="gov-link"><a href="mailto:esc@columbia.edu">esc@columbia.edu</a></div>
+        </div>
+        <div class="gov-item">
+          <div class="gov-role">General Studies Student Council</div>
+          <div class="gov-name">GSSC</div>
+          <div class="gov-desc">For GS undergrads — non-traditional students, transfers, vets, international. Liaisons with CCSC/ESC/SGA on joint policy.</div>
+          <div class="gov-link"><a href="mailto:gssc@columbia.edu">gssc@columbia.edu</a></div>
+        </div>
+        <div class="gov-item">
+          <div class="gov-role">Activities Board at Columbia</div>
+          <div class="gov-name">ABC</div>
+          <div class="gov-desc">Governing board for ~150 cultural, performing-arts, special-interest, and pre-professional clubs. Recognizes new groups; allocates club budgets.</div>
+          <div class="gov-link"><a href="mailto:abc@columbia.edu">abc@columbia.edu</a></div>
+        </div>
+        <div class="gov-item">
+          <div class="gov-role">Student Governing Board</div>
+          <div class="gov-name">SGB</div>
+          <div class="gov-desc">Governs activist, religious, political, ideological, and humanitarian groups across all four undergrad schools. Founded after the 1968 protests.</div>
+          <div class="gov-link"><a href="mailto:sgb@columbia.edu">sgb@columbia.edu</a></div>
+        </div>
+        <div class="gov-item">
+          <div class="gov-role">Inter-Greek Council</div>
+          <div class="gov-name">IGC</div>
+          <div class="gov-desc">Governs the 28 fraternities, sororities, and gender-inclusive Greek orgs at Columbia.</div>
+          <div class="gov-link"><a href="https://www.cc-seas.columbia.edu/studentlife/sororityfraternitylife">Greek life info</a></div>
+        </div>
+        <div class="gov-item">
+          <div class="gov-role">Residence Hall Leadership Organization</div>
+          <div class="gov-name">RHLO</div>
+          <div class="gov-desc">Each residence hall elects representatives — your direct line for hall-specific events, programming budgets, and residential issues.</div>
+          <div class="gov-link"><a href="https://reslife.columbia.edu">via Residential Life</a></div>
+        </div>
+        <div class="gov-item">
+          <div class="gov-role">University Senate (Student caucus)</div>
+          <div class="gov-name">CC, SEAS, GS senators</div>
+          <div class="gov-desc">The university-wide governance body. Three CC senators sit ex officio on CCSC. Real institutional power — academic policy, faculty, even tenure rules.</div>
+          <div class="gov-link"><a href="https://senate.columbia.edu">senate.columbia.edu</a></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ ROADMAPS ============ -->
+<section id="roadmaps" class="reveal">
+  <div class="section-head">
+    <span class="section-num">05</span>
+    <div class="section-title-wrap">
+      <p class="section-kicker">Suggestions, not scripts</p>
+      <h2><em>Roadmaps.</em></h2>
+    </div>
+  </div>
+
+  <div class="roadmap-disclaimer">
+    <p>These are sketches, not playbooks. Every upperclassman you ask will give you slightly different advice — and most of them will be right, just for themselves. There's a saying worth holding onto: the <em>law of equal and opposite advice</em>. For any solid piece of guidance, you can find someone equally smart giving the opposite. <span class="ex">"Recruit early."</span> / <span class="ex">"Don't recruit yet — explore."</span> Both can be true, depending on the person. Use these as starting points. Talk to many people. Trust your own read.</p>
+  </div>
+
+  <div class="roadmaps stagger-children" id="roadmapsGrid">
+    <!-- Populated by JS -->
+  </div>
+</section>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-mast">
+      Lions, unfiltered.<br>
+      A project from your <span style="color: var(--columbia-deep);">CCSC</span>.<br>
+      <span style="font-size: 16px; color: var(--ink-soft);">Columbia College Student Council.</span>
+    </div>
+    <div class="footer-col">
+      <h5>Official portals</h5>
+      <a href="https://ssol.columbia.edu" target="_blank">SSOL</a>
+      <a href="https://courseworks2.columbia.edu" target="_blank">CourseWorks</a>
+      <a href="https://www.cc-seas.columbia.edu/csa" target="_blank">CSA Advising</a>
+      <a href="https://www.health.columbia.edu" target="_blank">Columbia Health</a>
+      <a href="https://www.housing.columbia.edu" target="_blank">Columbia Housing</a>
+      <a href="https://dining.columbia.edu" target="_blank">Columbia Dining</a>
+    </div>
+    <div class="footer-col">
+      <h5>If you spot something wrong</h5>
+      <p style="font-size:13px; color: var(--ink-soft); line-height: 1.5;">Phone numbers, links, and policies change. Always confirm critical information on the official Columbia source before relying on it.</p>
+    </div>
+  </div>
+  <div class="colophon">
+    <span>© CCSC · Columbia College Student Council</span>
+    <span>Set in Newsreader, IBM Plex Sans &amp; IBM Plex Mono</span>
+  </div>
+</footer>
+
+<script>
+// ========== DATA ==========
+const resources = [
+  // HEALTH & WELLNESS
+  { cat: 'health', name: 'Counseling & Psychological Services (CPS)', desc: 'Free short-term individual counseling, drop-in sessions, and crisis support for any student who paid the Health Fee. Schedule a Treatment Planning Session to start.', phone: '212-854-2878', link: 'https://www.health.columbia.edu/content/counseling-and-psychological-services', linkLabel: 'health.columbia.edu', hours: 'Phone line 24/7' },
+  { cat: 'health', name: 'Medical Services (Primary Care)', desc: 'Same-day urgent visits, primary care, immunizations, sexual health, and travel medicine — included in the health fee.', phone: '212-854-7426', link: 'https://www.health.columbia.edu/content/medical-services', linkLabel: 'Make an appointment', hours: 'Mon–Fri, plus weekend hours' },
+  { cat: 'health', name: 'Sexual Violence Response (SVR)', desc: 'Confidential, trauma-informed support — crisis counseling, advocacy, and navigation. Drop-in hours available; the helpline runs 24/7.', phone: '212-854-HELP (4357)', link: 'https://sexualrespect.columbia.edu', linkLabel: 'sexualrespect.columbia.edu', hours: 'Helpline 24/7/365' },
+  { cat: 'health', name: 'Alice! Health Promotion', desc: 'Wellness coaching, sexual health peer education, sleep and stress workshops, and the long-running Go Ask Alice! Q&A archive.', phone: '212-854-5453', link: 'https://www.health.columbia.edu/content/alice-health-promotion', linkLabel: 'health.columbia.edu/alice', hours: 'Mon–Fri' },
+  { cat: 'health', name: 'Disability Services', desc: 'Accommodations for documented disabilities — extended testing time, housing accommodations, note-takers, accessible tech.', phone: '212-854-2388', link: 'https://www.health.columbia.edu/content/disability-services', linkLabel: 'Register or request', hours: 'Mon–Fri 9–5' },
+  { cat: 'health', name: 'Wellhub (off-campus gym subsidy)', desc: 'Columbia-subsidized membership platform launched Jan 2026 — gives you discounted access to 20,000+ gyms (NYSC, PureGym, Lifetime, Orange Theory, etc.) plus 50+ wellness apps. Tiers from free to ~$345/mo. A real answer to Dodge being packed.', phone: '—', link: 'https://universitylife.columbia.edu/news/wellhub-faqs', linkLabel: 'Sign up + plan tiers', hours: 'Subscription-based' },
+  { cat: 'health', name: 'Wellness Coaching', desc: 'Not therapy — a strengths-based partnership for habit change, time management, and goals. Free, no session cap.', phone: '—', link: 'https://www.health.columbia.edu/content/wellness-coaching', linkLabel: 'Submit intake form', hours: 'Mon–Fri' },
+
+  // HOUSING & DINING
+  { cat: 'housing', name: 'Housing Hospitality Desk (Hartley)', desc: 'Locked out? Lost your CUID and need a key loan? Need an overnight guest pass? Start here.', phone: '212-854-2779', link: 'https://www.housing.columbia.edu/content/room-and-suite-access', linkLabel: 'Lockout & key info', hours: '24/7 — desk in Hartley lobby' },
+  { cat: 'housing', name: 'Residential Life (RAs / RHDs)', desc: 'Your RA is your first stop for roommate conflict, hall events, or just a friendly check-in. RHDs handle bigger issues.', phone: '—', link: 'https://reslife.columbia.edu', linkLabel: 'reslife.columbia.edu', hours: 'RA on duty nightly' },
+  { cat: 'housing', name: 'Facilities — Maintenance Requests', desc: 'Broken AC, leaky sink, busted radiator, mystery smell. Submit a work order online; emergencies call directly.', phone: '212-854-2222', link: 'https://www.facilities.columbia.edu', linkLabel: 'Submit a work order', hours: 'Hotline 24/7' },
+  { cat: 'housing', name: 'Columbia Dining — Feedback', desc: 'Compliments, complaints, dish suggestions, allergen questions. Use the form, text the unit-specific code, talk to a manager in blue, or join "The Dish" updates.', phone: '—', link: 'https://dining.columbia.edu/content/contact-us-0', linkLabel: 'Submit feedback', hours: 'Always reading' },
+  { cat: 'housing', name: 'Flex / Dining Plan Issues', desc: 'Off-campus Flex problems, plan changes, missing swipes — Dining Services in 103 Hartley handles plan logistics.', phone: '212-854-DINE (3463)', link: 'https://dining.columbia.edu/content/flex', linkLabel: 'Off-campus Flex form', hours: 'Mon–Fri 9–5' },
+
+  // ACADEMIC
+  { cat: 'academic', name: 'Berick Center for Student Advising (CSA)', desc: 'Your assigned academic dean. Course selection, registration holds, AP/transfer credit, study abroad, leaves of absence, the whole degree.', phone: '212-854-6378', link: 'https://www.cc-seas.columbia.edu/csa', linkLabel: 'Book your advisor', hours: 'Mon–Fri 9–5; Advisor of the Day available' },
+  { cat: 'academic', name: 'Preprofessional Advising', desc: 'Specialized advising for pre-med, pre-law, and pre-business. Application timing, course planning, gap-year strategy.', phone: '212-854-6378', link: 'https://www.cc-seas.columbia.edu/csa/preprofessional', linkLabel: 'Pre-health & pre-law', hours: 'By appointment' },
+  { cat: 'academic', name: 'The Writing Center', desc: 'Free 1:1 consultations on any writing — essays, theses, applications, fellowships. Peer + grad consultants. Book online.', phone: '—', link: 'https://www.college.columbia.edu/core/uwp/writing-center', linkLabel: 'Schedule a session', hours: 'Mon–Fri + Sun evenings' },
+  { cat: 'academic', name: 'Peer Tutoring (CSA)', desc: 'Free tutoring for many intro STEM and language courses, plus Peer Academic Skills Consultants for study strategies.', phone: '212-854-6378', link: 'https://www.cc-seas.columbia.edu/csa/tutoring', linkLabel: 'Find a tutor', hours: 'Varies by course' },
+  { cat: 'academic', name: 'Office of Global Programs', desc: 'Study abroad applications, summer programs, language certificates, fellowships abroad. Start asking sophomore fall.', phone: '212-854-2559', link: 'https://undergrad.globaled.columbia.edu', linkLabel: 'Programs catalog', hours: 'Mon–Fri' },
+
+  // CAREER & MONEY
+  { cat: 'career', name: 'Center for Career Education (CCE)', desc: 'Resume reviews, mock interviews, employer info sessions, on-campus recruiting (LionSHARE), and career fairs by industry.', phone: '212-854-5609', link: 'https://www.careereducation.columbia.edu', linkLabel: 'careereducation.columbia.edu', hours: 'Mon–Fri 9–5' },
+  { cat: 'career', name: 'Student Financial Services', desc: 'Bills, payment plans, refunds, federal aid disbursement, term-bill questions. Different from Financial Aid (need-based).', phone: '212-854-4400', link: 'https://www.sfs.columbia.edu', linkLabel: 'sfs.columbia.edu', hours: 'Mon–Fri 9–5' },
+  { cat: 'career', name: 'Financial Aid Office', desc: 'Need-based aid packages, work-study, summer funding, and emergency aid. CSA can also direct you to emergency funds.', phone: '212-854-3711', link: 'https://cc-seas.financialaid.columbia.edu', linkLabel: 'CC/SEAS Financial Aid', hours: 'Mon–Fri 9–5' },
+  { cat: 'career', name: 'Columbia Entrepreneurship', desc: 'Funding, mentors, the Almaworks accelerator, and weekly office hours if you\'re building something.', phone: '—', link: 'https://entrepreneurship.columbia.edu', linkLabel: 'entrepreneurship.columbia.edu', hours: 'Office hours posted' },
+  { cat: 'career', name: 'Undergraduate Research (URF)', desc: 'Research grants (Work Exemption Program, summer fellowships), the URF database, and faculty connection events.', phone: '—', link: 'https://undergradresearch.cc.columbia.edu', linkLabel: 'Find a lab / grant', hours: 'Rolling' },
+
+  // SAFETY & ID
+  { cat: 'safety', name: 'Public Safety — Main', desc: 'Lost CUID, escort requests, suspicious activity, building access, parking. Emergency? Use 854-5555 instead.', phone: '212-854-2797', link: 'https://publicsafety.columbia.edu', linkLabel: 'publicsafety.columbia.edu', hours: '24/7' },
+  { cat: 'safety', name: 'Evening Safety Shuttle', desc: 'Free door-to-door shuttle within the perimeter, 6pm–4am during the school year. Request via the Lion Safe app.', phone: '212-854-2797', link: 'https://transportation.columbia.edu/content/evening-shuttle', linkLabel: 'Routes & request', hours: '6pm–4am, daily' },
+  { cat: 'safety', name: 'Lion Safe App', desc: 'Emergency button, mobile blue-light, shuttle requests, walking escorts, crime alerts. Install before you need it.', phone: '—', link: 'https://publicsafety.columbia.edu/content/lion-safe-mobile-app', linkLabel: 'Download iOS / Android', hours: '24/7' },
+  { cat: 'safety', name: 'CUID Replacement', desc: 'Lost or broken Columbia ID — go to the ID Center on the Kent Hall lower level. Replacement fee applies; emergency access can be arranged via Public Safety.', phone: '212-854-9897', link: 'https://www.cuit.columbia.edu/id-card-systems', linkLabel: 'ID Center info', hours: 'Mon–Fri' },
+  { cat: 'safety', name: 'Safety Escort', desc: 'Trained Public Safety officer walks you to your destination on or near campus, anytime. Just call.', phone: '212-854-2797', link: 'https://publicsafety.columbia.edu/services', linkLabel: 'About escorts', hours: '24/7' },
+
+  // IDENTITY & COMMUNITY
+  { cat: 'identity', name: 'Multicultural Affairs (OMA)', desc: 'Heritage months, identity-based communities, the Intercultural Resource Center (IRC), and student org support.', phone: '212-854-0720', link: 'https://multicultural.columbia.edu', linkLabel: 'multicultural.columbia.edu', hours: 'Mon–Fri' },
+  { cat: 'identity', name: 'LGBTQ Affairs', desc: 'Programming, mentorship, the Q&A center in 305 Lerner, and trans-inclusive health/housing navigation.', phone: '212-854-1488', link: 'https://multicultural.columbia.edu/content/lgbtq', linkLabel: 'Drop-in & events', hours: 'Mon–Fri' },
+  { cat: 'identity', name: 'Religious Life', desc: 'Chaplains for every tradition, kosher/halal dining, Earl Hall worship spaces, interfaith programs.', phone: '212-854-1493', link: 'https://religiouslife.columbia.edu', linkLabel: 'religiouslife.columbia.edu', hours: 'Mon–Fri + service hours' },
+  { cat: 'identity', name: 'International Students & Scholars Office (ISSO)', desc: 'Visa renewals, OPT/CPT, travel signatures, tax workshops. Book early — appointments fill up.', phone: '212-854-3415', link: 'https://isso.columbia.edu', linkLabel: 'isso.columbia.edu', hours: 'Mon–Fri 9–5' },
+  { cat: 'identity', name: 'First-Generation & Low-Income Partnership (FLIP)', desc: 'Free textbook library, professional clothing closet, peer mentorship, and emergency funding for FLI students.', phone: '—', link: 'https://columbiaflip.org', linkLabel: 'columbiaflip.org', hours: 'Office hours posted' },
+
+  // TECH & LIBRARY
+  { cat: 'tech', name: 'CUIT Service Desk', desc: 'Wi-Fi issues, LionMail, VPN, software licenses, password resets, printing. Walk-in at 102 Philosophy Hall.', phone: '212-854-1919', link: 'https://www.cuit.columbia.edu', linkLabel: 'cuit.columbia.edu', hours: '24/7 phone; in-person Mon–Fri' },
+  { cat: 'tech', name: 'Butler Library', desc: 'Open 24/7 during the semester. Group study, silent floors, the Reference Desk, and printing on every floor.', phone: '212-854-2241', link: 'https://library.columbia.edu/libraries/butler.html', linkLabel: 'library.columbia.edu', hours: '24/7 in session' },
+  { cat: 'tech', name: 'Subject Librarians', desc: 'Real humans who know your field. Book a 1:1 to find sources for any paper — better than three hours of Google.', phone: '—', link: 'https://library.columbia.edu/services/research-help.html', linkLabel: 'Find your librarian', hours: 'By appointment' },
+  { cat: 'tech', name: 'Print & Scan (CU Print)', desc: 'Free black-and-white printing quota each semester; color costs extra. Send jobs from any laptop via the CU Print portal.', phone: '212-854-1919', link: 'https://print.columbia.edu', linkLabel: 'print.columbia.edu', hours: '24/7 in libraries' },
+  { cat: 'tech', name: 'Digital Humanities Center / Studio@Butler', desc: 'GPU workstations, video editing suites, 3D printing, podcast booths. Reserve online.', phone: '—', link: 'https://library.columbia.edu/services/dhc.html', linkLabel: 'Reserve a space', hours: 'Library hours' },
+
+  // GLOBAL & ABROAD — esp. for freshman year and summer
+  { cat: 'global', name: 'Laidlaw Scholars Program', desc: 'A flagship Columbia opportunity for first-years. Up to 25 students get two fully-funded summers — research at Columbia after Y1, then leadership-in-action (often abroad) after Y2. ~$8,400 stipend. Apply spring of freshman year.', phone: '—', link: 'https://urf.columbia.edu/fellowship/laidlaw-scholars-program', linkLabel: 'Apply spring Y1', hours: 'Annual cycle' },
+  { cat: 'global', name: 'Columbia Global Centers Internships', desc: 'Summer internships at Columbia\'s nine Global Centers — Amman, Beijing, Istanbul, Mumbai, Nairobi, Paris, Rio, Santiago, Tunis. Open to undergrads in any year. Often funded.', phone: '—', link: 'https://global.columbia.edu/news/columbia-global-student-internship', linkLabel: 'Apply (annual cycle)', hours: 'Summer placements' },
+  { cat: 'global', name: 'Office of Global Programs (UGE)', desc: 'Your starting point for anything international — study abroad, summer programs, internships abroad, fellowships, travel funding. Book an advising session early.', phone: '212-854-2559', link: 'https://undergrad.globaled.columbia.edu', linkLabel: 'Browse programs', hours: 'Mon–Fri' },
+  { cat: 'global', name: 'Critical Language Scholarship (CLS)', desc: 'Federally-funded 8-week intensive language immersion abroad. Arabic, Mandarin, Russian, Korean, Hindi, Swahili, etc. Open to all undergrad years; freshmen are competitive for some languages.', phone: '—', link: 'https://www.clscholarship.org', linkLabel: 'Federal application', hours: 'Apps due late Nov' },
+  { cat: 'global', name: 'Boren Awards', desc: 'Federal funding (up to $25K) for studying critical languages and regions abroad — in exchange for a year of federal service after graduation. Strong fit for IR/policy/security tracks.', phone: '—', link: 'https://www.borenawards.org', linkLabel: 'borenawards.org', hours: 'Annual' },
+  { cat: 'global', name: 'DAAD RISE Germany', desc: 'Paid summer research internships in Germany for STEM undergrads (juniors+ usually, but worth knowing early). German not required — most labs work in English.', phone: '—', link: 'https://www.daad.de/rise/en/', linkLabel: 'DAAD RISE program', hours: 'Apps in winter' },
+  { cat: 'global', name: 'AIESEC at Columbia', desc: 'Student-run global internship and volunteer placement network — over 100 countries. Lower bar than federal programs; great way to spend a summer abroad doing real work.', phone: '—', link: 'https://aiesec.org', linkLabel: 'AIESEC global', hours: 'Year-round' },
+  { cat: 'global', name: 'ISSO — International Students & Scholars', desc: 'Visa, OPT/CPT, travel signatures, tax workshops, post-graduation work authorization. Don\'t wait — appointments fill up fast in spring.', phone: '212-854-3415', link: 'https://isso.columbia.edu', linkLabel: 'isso.columbia.edu', hours: 'Mon–Fri 9–5' },
+  { cat: 'global', name: 'Schwarzman, Rhodes, Marshall, Mitchell, Gates', desc: 'Post-grad international scholarships (one year+ abroad). You\'re early, but plant the seed: cultivate relationships with faculty letters, take on leadership, and meet with the Fellowships office sophomore year.', phone: '—', link: 'https://urf.columbia.edu/scholarships', linkLabel: 'Fellowships office', hours: 'By appointment' },
+];
+
+// ========== HOW DO I... ==========
+const howdo = [
+  { q: 'I\'m locked out of my dorm at 2am. What now?',
+    a: 'Walk to the <strong>Hartley Hall Hospitality Desk</strong> — it\'s staffed 24/7. Show your CUID and request a <a href="https://www.housing.columbia.edu/content/room-and-suite-access" target="_blank">key assist</a>. Your first per semester is free; after that it\'s $20 charged to your student account. If your CUID is also missing and you can\'t get into the building, call <strong><a href="tel:2128542797">Public Safety at 212-854-2797</a></strong> from the front desk phone or any blue-light box.' },
+  { q: 'How do I actually submit dining feedback that someone reads?',
+    a: 'Three options: (1) the <a href="https://dining.columbia.edu/content/contact-us-0" target="_blank">Contact Us form</a> on the Columbia Dining site — include your email if you want a reply. (2) Each dining hall has a <strong>unit-specific text code</strong> posted near the entrance; texts go straight to that location\'s manager. (3) Find a manager (blue button-down or nametag) in person — they\'re generally responsive. There\'s also an <a href="https://dining.columbia.edu/" target="_blank">annual fall survey</a> that\'s worth filling out; menu changes have come from it.' },
+  { q: 'How do I find / change my CSA advisor?',
+    a: 'Log into <a href="https://ssol.columbia.edu" target="_blank"><strong>SSOL → Advising</strong></a> to see who you\'re assigned to. Email them directly to schedule. If you want to switch advisors (you\'re allowed to — different fit, different department interest), email <a href="mailto:advising@columbia.edu">advising@columbia.edu</a> or stop by 403 Alfred Lerner Hall to talk to the <a href="https://www.cc-seas.columbia.edu/csa" target="_blank">Advisor of the Day</a>.' },
+  { q: 'I think I need counseling. Where do I start?',
+    a: 'Call <strong><a href="tel:2128542878">CPS at 212-854-2878</a></strong> and request a <em>Treatment Planning Session</em> — that\'s the intake. Or schedule one through the <a href="https://www.health.columbia.edu/content/make-appointment" target="_blank">Patient Portal</a>. If you want to be seen <em>today</em>, walk into a <a href="https://www.health.columbia.edu/content/counseling-drop-visits" target="_blank">drop-in</a> — Lerner 502, weekdays 5:30–8pm for Urgent Concerns. Crisis right now? The same number, 854-2878, has a clinician on call 24/7.' },
+  { q: 'I lost my CUID. What\'s the procedure?',
+    a: 'Go to the <strong><a href="https://www.cuit.columbia.edu/id-card-systems" target="_blank">ID Center on the lower level of Kent Hall</a></strong> during business hours for a replacement (there\'s a fee). Need to get into your dorm before that? <strong><a href="tel:2128542797">Public Safety (212-854-2797)</a></strong> can grant temporary access; the Hospitality Desk can give you a key loan in the meantime. Deactivate the lost card immediately so nobody else can use it.' },
+  { q: 'Something\'s broken in my room. Who fixes it?',
+    a: 'Submit a <a href="https://www.housing.columbia.edu" target="_blank"><strong>maintenance request via the Housing Portal</strong></a> for non-urgent issues (slow drain, flickering light). For emergencies — flooding, no heat in winter, electrical hazards — call <strong><a href="tel:2128542222">Facilities at 212-854-2222</a></strong> directly, 24/7. Tell your RA too if it affects the floor.' },
+  { q: 'How do I get accommodations for a learning disability or chronic condition?',
+    a: 'Register with <strong><a href="https://www.health.columbia.edu/content/disability-services" target="_blank">Disability Services (212-854-2388)</a></strong>. Bring documentation from a provider. They handle extended testing time, note-takers, accessible housing, and reduced course loads. You don\'t need a "severe" diagnosis — anxiety, ADHD, and chronic illness all qualify. Earlier in the semester is much better than mid-finals.' },
+  { q: 'What if I want to take a leave of absence?',
+    a: 'Talk to your <strong><a href="https://www.cc-seas.columbia.edu/csa" target="_blank">CSA advisor</a> first</strong>. They\'ll walk you through medical, personal, or academic leave paperwork, financial-aid implications, and the return process. Leaves are more common than people often think, and the system is built to support taking one when you need it.' },
+  { q: 'How do I report a Title IX issue or sexual misconduct?',
+    a: '<strong>Confidential support</strong> (no report triggered): <a href="https://sexualrespect.columbia.edu" target="_blank">SVR at 212-854-HELP (4357)</a>, <a href="https://www.health.columbia.edu/content/counseling-and-psychological-services" target="_blank">CPS</a>, or a religious life chaplain. <strong>Formal report</strong>: <a href="https://eoaa.columbia.edu" target="_blank">EOAA office</a> — they handle Title IX investigations. You can talk to SVR first to understand options before deciding anything.' },
+  { q: 'Is there really free food on campus?',
+    a: 'Yes — plenty, if you know where to look. The <a href="https://www.facebook.com/groups/freefoodatcolumbia/" target="_blank"><strong>FREE FOOD @ COLUMBIA</strong> Facebook group</a>, the @columbiafreefood Instagram, club meeting flyers, and the Lerner ramps on Friday afternoons are all reliable spots. Many clubs post leftovers from their events too.' },
+  { q: 'How do I get the text-message emergency alerts?',
+    a: 'Log into <a href="https://ssol.columbia.edu" target="_blank"><strong>SSOL → Text Message Enrollment</strong></a> and add your number. Most students are auto-enrolled in the fall, but check anyway. These only fire for actual emergencies — closures, severe weather, active incidents — not spam.' },
+  { q: 'How do I find an internship / job on campus?',
+    a: 'Two systems: <a href="https://www.careereducation.columbia.edu/lionshare" target="_blank"><strong>LionSHARE</strong></a> (run by CCE) for off-campus internships and full-time jobs, and the <a href="https://www.studentemployment.columbia.edu" target="_blank"><strong>Columbia Student Employment</strong></a> portal for on-campus work-study and casual jobs. Subject librarians, lab managers, and dining services all hire freshmen. Email professors directly for research positions.' },
+];
+
+// ========== ROADMAPS ==========
+const roadmaps = [
+  { icon: '⚕', title: 'Pre-Med', blurb: 'The long, structured one. Plan early; the science prereqs stack.',
+    steps: [
+      { yr: 'Fall Y1', what: 'Gen Chem + Calc/Bio. Meet your CSA preprofessional advisor. Start clinical exposure (CU EMS training, hospital volunteering).' },
+      { yr: 'Y2', what: 'Orgo + Physics. Join a research lab. Begin shadowing physicians.' },
+      { yr: 'Y3', what: 'Biochem. MCAT prep (spring/summer). Refine your school list with prehealth advising.' },
+      { yr: 'Y4 / Gap', what: 'AMCAS app. Most Columbia premeds take 1–2 gap years now — don\'t panic if you do.' },
+    ],
+    clubs: [
+      { name: 'Charles Drew Pre-Medical Society', desc: 'Mentorship, panels, MCAT support', link: 'https://charlesdrewcolumbia.wixsite.com/charlesdrewcolumbia' },
+      { name: 'Columbia AMSA', desc: 'Activism + admissions ed', link: 'https://columbiaamsa.wordpress.com/' },
+      { name: 'Columbia Women in Medicine Society', desc: 'Network + advocacy', link: 'https://columbiawims.weebly.com/' },
+      { name: 'CU-EMS', desc: 'Volunteer EMT — real patient care', link: 'https://cuems.studentgroups.columbia.edu/' },
+      { name: 'GHAP (Gay Health Advocacy Project)', desc: 'Sexual health peer counseling', link: 'https://www.health.columbia.edu/content/alice-health-promotion' },
+      { name: 'Doctors Without Borders Student Chapter', desc: 'Global health speakers + advocacy', link: 'https://www.cc-seas.columbia.edu/student-group/doctors-without-borders-student-chapter-columbia-university' },
+      { name: 'Columbia Public Health Club', desc: 'For the public-health side of pre-med', link: 'https://www.cc-seas.columbia.edu/student-group/columbia-public-health-club' },
+      { name: 'Columbia Synapse', desc: 'Neuroscience-focused community', link: 'https://www.cc-seas.columbia.edu/student-group/columbia-synapse' },
+    ]
+  },
+  { icon: '$', title: 'Finance / IB',
+    blurb: 'Recruiting starts very early. Treating freshman year as exposure and prep is a common pattern.',
+    steps: [
+      { yr: 'Fall Y1', what: 'Attend CFIG\'s open speaker events. Read finance basics. Build the resume now (start with anything quantitative).' },
+      { yr: 'Spring Y1', what: 'Apply for OCM (open class member) roles in finance clubs. Coffee chats with sophomores who got internships.' },
+      { yr: 'Fall Y2', what: 'Sophomore-summer programs at IBs/PE shops open this fall — early apps. Diversity programs even earlier.' },
+      { yr: 'Y3', what: 'Junior-summer IB SA recruiting (the big one). Often happens sophomore spring/early junior fall now.' },
+    ],
+    clubs: [
+      { name: 'CFIG', desc: 'Largest finance club; OCM applications open in fall', link: 'https://www.cfig-columbia.com/' },
+      { name: 'Columbia Alpha Partners', desc: 'Banking + markets + RE structured programming', link: 'https://www.cc-seas.columbia.edu/student-group/columbia-alpha-partners' },
+      { name: 'Lion Fund', desc: 'Selective student-run fund, strong alumni network', link: 'https://www.cc-seas.columbia.edu/student-group/lion-fund' },
+      { name: '116th Capital Partners', desc: 'Investment club; case-driven', link: 'https://www.cc-seas.columbia.edu/student-group/116th-capital-partners' },
+      { name: 'CORE', desc: 'Entrepreneurship + speakers + community', link: 'https://www.cc-seas.columbia.edu/student-group/columbia-organization-rising-entrepreneurs-core' },
+      { name: 'Columbia Women\'s Business Society', desc: 'Mentorship and recruiting prep', link: 'https://www.cc-seas.columbia.edu/student-group/columbia-womens-business-society' },
+      { name: 'Columbia Undergraduate Wealth Management Club', desc: 'Wealth management + portfolio practice', link: 'https://www.cc-seas.columbia.edu/student-group/columbia-undergraduate-wealth-management-club' },
+      { name: 'TAMID at Columbia', desc: 'Consulting + investment with Israeli startups', link: 'https://www.cc-seas.columbia.edu/student-group/tamid-columbia' },
+      { name: 'Columbia Multicultural Business Association', desc: 'Recruiting + community for underrepresented students', link: 'https://www.cc-seas.columbia.edu/student-group/columbia-multicultural-business-association' },
+    ]
+  },
+  { icon: '⌬', title: 'Consulting',
+    blurb: 'Cases, cases, cases. Build a network early; the firms come to you.',
+    steps: [
+      { yr: 'Y1', what: 'Join a consulting club. Learn case structure (Case in Point / Victor Cheng). Attend MBB info sessions.' },
+      { yr: 'Y2', what: 'Sophomore diversity programs (Bain BCDP, BCG ADC, McKinsey FYW). Apply in fall.' },
+      { yr: 'Y3', what: 'Summer Associate recruiting. Mock cases with upperclassmen are gold.' },
+    ],
+    clubs: [
+      { name: 'Columbia Undergraduate Consulting Club', desc: 'Case prep + speaker series', link: 'https://www.cc-seas.columbia.edu/student-group/columbia-undergraduate-consulting-club' },
+      { name: 'Columbia Global Research and Consulting', desc: 'Pro-bono client work', link: 'https://www.cc-seas.columbia.edu/student-group/columbia-global-research-and-consulting-group' },
+      { name: '180 Degrees Consulting', desc: 'Pro-bono consulting for NYC nonprofits and social enterprises', link: 'https://www.cc-seas.columbia.edu/student-group/180-degrees-consulting' },
+      { name: 'Consult Your Community at Columbia', desc: 'Pro-bono consulting for small businesses', link: 'https://www.cc-seas.columbia.edu/student-group/columbia-university-chapter-consult-your-community' },
+      { name: 'Smart Woman Securities', desc: 'Finance + consulting case prep', link: 'https://www.cc-seas.columbia.edu/student-group/smart-woman-securities' },
+      { name: 'Columbia Multicultural Business Association', desc: 'Recruiting + community', link: 'https://www.cc-seas.columbia.edu/student-group/columbia-multicultural-business-association' },
+    ]
+  },
+  { icon: '⌘', title: 'CS / Industry & Research',
+    blurb: 'Two real paths — industry and research/PhD. Industry runs through internships, projects you can show, and recruiting cycles that start very early. Research runs through labs, papers, and letters from professors who know your work in detail. The foundations are mostly the same; many CS students explore both before choosing. One thing worth deciding early: course sequencing is strategic. A common pattern is to front-load the harder upper-level courses (algorithms, theory, systems, ML) while you have momentum, and leave easier required ones — Discrete is the classic example — for senior year when you want a lighter load. Others go the opposite direction, knocking out the easier requirements first to keep GPA high during sophomore-fall recruiting. Neither is wrong; it\'s a choice tied to how you approach recruiting and where you want your GPA to peak.',
+    steps: [
+      { yr: 'Fall Y1', what: 'COMS 1004 or 1006 (intro CS). Build something — a finished side project beats a polished resume. Cookies & Code at ADI on Wednesdays.' },
+      { yr: 'Spring Y1', what: 'Continue the CS sequence (Data Structures next, or stagger heavier courses based on your sequencing strategy). Industry: freshman-summer SWE internships are rare but real, especially via diversity programs (Google STEP, MLT, Codepath, Meta University). Research: cold-email 3–5 professors whose work genuinely interests you. DevFest hackathon either way.' },
+      { yr: 'Y2', what: 'Sophomore-summer SWE recruiting opens fall — apply early to FAANG, fintech, and tier-1 startups. For research, commit to one lab and stay; switching every term is worse than depth. TAing 1004 / 3134 / 3137 pays well and serves both paths.' },
+      { yr: 'Y3', what: 'Junior summer is the big internship — return offers from this drive most full-time placements. Research path: aim for first-author or strong co-author work at a workshop or conference (subfield-dependent: NeurIPS, ICML, CHI, USENIX, etc.). REUs elsewhere for breadth and extra letters.' },
+      { yr: 'Y4 / After', what: 'Industry: convert the return offer, or run full-time recruiting in early fall. Research: PhD apps span 8–12 schools with three letters from research advisors who can speak in detail. Pre-doc / RA-ships between undergrad and PhD are increasingly common, and increasingly competitive.' },
+    ],
+    clubs: [
+      { name: 'ADI', desc: 'Cookies & Code, DevFest, ADI Labs — community + projects', link: 'https://www.adicu.com/' },
+      { name: 'A faculty research lab', desc: 'Non-negotiable for research; also useful for industry roles', link: 'https://www.cs.columbia.edu/research/' },
+      { name: 'TA / CA roles', desc: 'Apply through the CS dept; strong pay + great for letters either way', link: 'https://www.cs.columbia.edu/education/courses/ta-info/' },
+      { name: 'Women in CS (WiCS)', desc: 'Mentorship, workshops, internship + research connections', link: 'https://www.cs.columbia.edu/student-organizations/' },
+      { name: 'CU ACM', desc: 'Competitive programming + tech talks', link: 'https://www.cs.columbia.edu/student-organizations/' },
+      { name: 'Columbia Quant Group', desc: 'Quant trading + the CS / finance overlap', link: 'https://www.cc-seas.columbia.edu/student-group/columbia-quant-group' },
+      { name: 'Theory reading groups', desc: 'Departmental + student-run; check the CS dept calendar', link: 'https://www.cs.columbia.edu/' },
+      { name: 'Girls Who Code at Columbia', desc: 'Mentor + teach NYC high school girls to code', link: 'https://www.cc-seas.columbia.edu/student-group/girls-who-code-columbia-university' },
+      { name: 'Columbia Robogals', desc: 'Women in robotics + STEM outreach to younger students', link: 'https://www.cc-seas.columbia.edu/student-group/columbia-robogals' },
+    ]
+  },
+  { icon: 'Δ', title: 'Econ PhD',
+    blurb: 'A research degree, not a credential. The job market is academia or research economist roles (Fed, IMF, World Bank, tech). Math is the gate; RA work is the proof; letters from people who supervised your research are everything.',
+    steps: [
+      { yr: 'Y1', what: 'Calculus all the way through multivariable. Linear algebra. Intro Micro / Macro / Stats. Don\'t shortcut the math foundation — first-year PhD courses will eat you alive without it.' },
+      { yr: 'Y2', what: 'Real Analysis is the single most signal-bearing class on your transcript for econ PhD admissions. Take it, take it seriously, do well. Add probability theory and mathematical statistics. Strongly consider the joint Math-Econ major.' },
+      { yr: 'Y2–Y3', what: 'Become an RA for a Columbia economics or related-field faculty member. This matters more than your GPA. Many professors will hire a curious sophomore who codes (Stata, R, Python) — knock on doors, attend office hours, ask thoughtful questions.' },
+      { yr: 'Y3', what: 'Senior thesis or substantial research project. Apply for AEA Summer Training Program (especially valuable for underrepresented students). Take a graduate-level econ or math class if you can handle it.' },
+      { yr: 'Y4 / Pre-doc', what: 'Most strong applicants now do a 1–2 year pre-doc before PhD apps: PREDOC consortium positions, Federal Reserve Board / regional Fed RA programs, NBER, or pre-docs at Stanford / Booth / Princeton / MIT. Three letters from research supervisors carry the application.' },
+    ],
+    clubs: [
+      { name: 'A faculty RA-ship', desc: 'Non-negotiable. The path runs through this.', link: 'https://econ.columbia.edu/' },
+      { name: 'Columbia Economics Society', desc: 'Speakers + community + advising', link: 'https://www.cc-seas.columbia.edu/student-group/economics-society' },
+      { name: 'PREDOC.org', desc: 'Centralized listings for econ pre-doc positions', link: 'https://predoc.org/' },
+      { name: 'Honors thesis program', desc: 'Junior–senior year through the Econ department', link: 'https://econ.columbia.edu/undergraduate/' },
+      { name: 'AEA Summer Training Program', desc: 'Selective summer prep, especially for diverse applicants', link: 'https://www.aeaweb.org/about-aea/committees/aeasp' },
+      { name: 'Federal Reserve RA programs', desc: 'NY, DC, and regional Feds — the classic econ pre-doc path', link: 'https://www.federalreserve.gov/careers-research-assistant.htm' },
+    ]
+  },
+  { icon: '§', title: 'Pre-Law',
+    blurb: 'Fewer formal requirements than pre-med. GPA + LSAT + a coherent story.',
+    steps: [
+      { yr: 'Y1–Y2', what: 'Take a writing-heavy course load. Join activities you actually care about (depth > breadth). Visit prelaw advising early.' },
+      { yr: 'Y3', what: 'LSAT prep (most take 3–6 months). Identify recommenders. Begin personal statement drafting.' },
+      { yr: 'Y3 Summer / Y4', what: 'LSAT, applications, interviews. Many take a gap year — also fine.' },
+    ],
+    clubs: [
+      { name: 'Pre-Law Society', desc: 'Panels + LSAT info + admissions Q&A', link: 'https://www.cc-seas.columbia.edu/student-group/pre-law-society' },
+      { name: 'CU Mock Trial', desc: 'Competitive trial advocacy team', link: 'https://www.cc-seas.columbia.edu/student-group/columbia-university-mock-trial' },
+      { name: 'NYSCAS', desc: 'NY Small Claims Advisory Service — actual legal work helping NYC plaintiffs', link: 'https://www.cc-seas.columbia.edu/student-group/new-york-small-claims-advisory-service-columbia-nyscas' },
+      { name: 'Columbia Women in Law and Politics', desc: 'Speakers + mentorship', link: 'https://www.cc-seas.columbia.edu/student-group/columbia-university-women-law-and-politics' },
+      { name: 'Roosevelt Institute', desc: 'Student policy research + writing', link: 'https://www.cc-seas.columbia.edu/student-group/roosevelt-institute' },
+    ]
+  },
+  { icon: '✦', title: 'Arts / Creative',
+    blurb: 'Make stuff. Audition for everything in September. The campus is loud with talent.',
+    steps: [
+      { yr: 'Y1', what: 'Audition / submit to ~3 groups in NSOP and Sept. Take a Core arts class seriously — Lit Hum + Music Hum are real influences.' },
+      { yr: 'Y2', what: 'Pitch a project. Write for Spec or a magazine. Build a portfolio.' },
+      { yr: 'Y3+', what: 'Major/concentration in a creative field; senior thesis or showcase. Apply for arts grants (URF, Arts Initiative).' },
+    ],
+    clubs: [
+      { name: 'Columbia Daily Spectator', desc: 'The student newspaper — large, professional', link: 'https://www.columbiaspectator.com/' },
+      { name: 'The Blue and White', desc: 'Founded 1890; campus magazine of essays and literary journalism', link: 'https://www.theblueandwhite.org/' },
+      { name: 'Bwog', desc: 'Independent campus blog — news, gossip, satire', link: 'https://bwog.com/' },
+      { name: 'WKCR / WBAR', desc: 'Student radio (FM) — DJs, music, talk', link: 'https://www.wkcr.org/' },
+      { name: 'Varsity Show', desc: '130-year-old satirical musical, by and for the school', link: 'https://www.cc-seas.columbia.edu/student-group/varsity-show' },
+      { name: 'KCST + CMTS', desc: 'Theatre — Shakespeare and modern musicals', link: 'https://www.cc-seas.columbia.edu/student-group/king-crown-shakespeare-troupe' },
+      { name: 'LateNite Theater', desc: 'Sketch comedy anthology, twice a semester at the Lerner Black Box', link: 'https://www.cc-seas.columbia.edu/student-group/latenite-theater' },
+      { name: 'Fruit Paunch Improv', desc: 'Long-running undergraduate improv troupe', link: 'https://www.cc-seas.columbia.edu/student-group/fruit-paunch-improv' },
+      { name: 'Postcrypt Coffeehouse', desc: 'All-acoustic music venue in St. Paul\'s Chapel basement, since 1964', link: 'https://blogs.cuit.columbia.edu/postcrypt/' },
+      { name: '4x4 Magazine + Quarto', desc: 'Literary publications open to submissions', link: 'https://www.cc-seas.columbia.edu/student-group/4x4-magazine' },
+    ]
+  },
+  { icon: '◊', title: 'Public Service / Policy',
+    blurb: 'NYC is the lab. Use it.',
+    steps: [
+      { yr: 'Y1', what: 'Volunteer (Community Impact has 20+ programs). Take an SIPA cross-listed course if eligible.' },
+      { yr: 'Y2', what: 'Capitol Hill / NGO summer internships. Fellowships open: Truman, Udall, Rangel.' },
+      { yr: 'Y3+', what: 'Senior thesis or capstone. Apply for Schwarzman, Marshall, Rhodes (CSA Fellowships office helps).' },
+    ],
+    clubs: [
+      { name: 'Columbia Political Union', desc: 'Bipartisan speakers + debates', link: 'https://www.cc-seas.columbia.edu/student-group/columbia-political-union' },
+      { name: 'CIRCA', desc: 'International relations + Model UN', link: 'https://www.cc-seas.columbia.edu/student-group/columbia-international-relations-council-and-association-circa' },
+      { name: 'Community Impact', desc: 'Largest service org — tutoring, food, advocacy across 25+ programs', link: 'https://communityimpact.columbia.edu/' },
+      { name: 'Engineers Without Borders', desc: 'Sustainable engineering projects in Ghana, Morocco, Uganda', link: 'http://cuewb.org/' },
+      { name: 'Camp Kesem at Columbia', desc: 'Summer camp for kids whose parents have cancer — student-run', link: 'https://www.cc-seas.columbia.edu/student-group/camp-kesem' },
+      { name: 'CityStep Columbia', desc: 'Dance + arts mentorship with NYC public school students', link: 'https://www.cc-seas.columbia.edu/student-group/citystep-columbia' },
+      { name: 'Roosevelt Institute', desc: 'Student policy think tank', link: 'https://www.cc-seas.columbia.edu/student-group/roosevelt-institute' },
+      { name: 'Columbia Mentoring Initiative', desc: 'Mentor NYC public-school students', link: 'https://www.cc-seas.columbia.edu/student-group/columbia-mentoring-initiative' },
+    ]
+  },
+  { icon: '✸', title: 'Curate your own',
+    blurb: 'Some of the most interesting work — urban planning, AI safety, climate, public health, design research, science journalism, computational humanities — doesn\'t live on a single roadmap. The path is yours to assemble. Take an unusual combination of classes. Find one passionate professor in each adjacent field. Join clubs because they sound like fun, not because they "fit your major."',
+    steps: [
+      { yr: 'Y1', what: 'Cast wide. Take one class outside your obvious lane every semester. Join one club that has nothing to do with your career plans. Read the GSAPP, Climate School, and SIPA course catalogs even if you\'re in CC/SEAS — much of it is cross-listed for undergrads.' },
+      { yr: 'Y2', what: 'Find the two or three fields you keep returning to. Go deep enough in each to read the actual academic literature. Get coffee with professors in all of them — they often shape your trajectory more than coursework.' },
+      { yr: 'Y3', what: 'Pull the threads together. Research projects, theses, and senior projects love interdisciplinary work — frame yours around a real problem rather than a single discipline. Consider concentrations or minors that bridge fields.' },
+      { yr: 'Y4 / After', what: 'Roles in fields like urban planning, AI safety, design research, science writing, and climate policy reward people who can speak multiple languages — academic, technical, human. The unusual combination is the asset, not the liability.' },
+    ],
+    clubs: [
+      { name: 'Columbia AI Alignment / Effective Altruism', desc: 'AI safety + cause prioritization reading groups', link: 'https://www.cc-seas.columbia.edu/student-group/columbia-effective-altruism' },
+      { name: 'GSAPP cross-registration', desc: 'Urban planning, architecture, real estate electives open to undergrads', link: 'https://www.arch.columbia.edu/programs/41-cross-registration' },
+      { name: 'Columbia Climate School cross-listings', desc: 'Climate, sustainability, environmental policy classes', link: 'https://www.climate.columbia.edu/education' },
+      { name: 'SIPA cross-listings', desc: 'Policy and international affairs classes for upper-level undergrads', link: 'https://www.sipa.columbia.edu/academics/courses' },
+      { name: 'COÖP — Columbia Outdoor Orientation', desc: 'Outdoor pre-orientation + ongoing trips. The most surprising friendships start here.', link: 'https://www.cc-seas.columbia.edu/preorientation/coop' },
+      { name: 'Columbia Bartending Agency', desc: 'Real income, real social network, oddly useful skill', link: 'https://www.cc-seas.columbia.edu/student-group/columbia-bartending-agency-classes-bartenders' },
+      { name: 'Splash! at Columbia', desc: 'Design and teach a one-day class on anything to NYC middle and high schoolers', link: 'https://splash.columbia.edu/' },
+      { name: 'The Blue and White / 4x4 / Quarto', desc: 'Literary magazines — write outside your major', link: 'https://www.theblueandwhite.org/' },
+      { name: 'Cultural &amp; affinity groups', desc: 'Bhangra, Sounds of China, Liga Filipina, BSO, MEChA — the heart of campus social life', link: 'https://www.cc-seas.columbia.edu/student-groups/all' },
+      { name: 'Columbia University Culinary Society', desc: 'Founded 1998, 2,000+ on the listserv. Tastings, cooking classes, restaurant trips — one of the most enduring social clubs on campus.', link: 'https://www.cc-seas.columbia.edu/student-group/columbia-university-culinary-society' },
+    ]
+  },
+];
+
+// ========== RENDER ==========
+const grid = document.getElementById('resourceGrid');
+const search = document.getElementById('search');
+const filterTags = document.getElementById('filterTags');
+let activeFilter = 'all';
+let activeQuery = '';
+
+function renderResources() {
+  const q = activeQuery.trim().toLowerCase();
+  const filtered = resources.filter(r => {
+    const matchesCat = activeFilter === 'all' || r.cat === activeFilter;
+    const matchesQuery = !q || (r.name + ' ' + r.desc + ' ' + r.cat).toLowerCase().includes(q);
+    return matchesCat && matchesQuery;
+  });
+
+  if (filtered.length === 0) {
+    grid.innerHTML = '<div class="no-results">Nothing found. Try a broader term, or browse a different category.</div>';
+    return;
+  }
+
+  grid.innerHTML = filtered.map(r => `
+    <div class="resource">
+      <span class="cat-tag">${catLabel(r.cat)}</span>
+      <h4>${r.name}</h4>
+      <p>${r.desc}</p>
+      <div class="contact">
+        ${r.phone && r.phone !== '—' ? `<a href="tel:${r.phone.replace(/[^0-9]/g,'')}">☎ ${r.phone}</a>` : ''}
+        ${r.link ? `<a href="${r.link}" target="_blank" rel="noopener">↗ ${r.linkLabel}</a>` : ''}
+        <span class="hours">${r.hours}</span>
+      </div>
+    </div>
+  `).join('');
+}
+
+function catLabel(c) {
+  return ({
+    health: 'Health & Wellness',
+    housing: 'Housing & Dining',
+    academic: 'Academic',
+    career: 'Career & Money',
+    safety: 'Safety & ID',
+    identity: 'Identity & Community',
+    tech: 'Tech & Library',
+    global: 'Global & Abroad'
+  })[c] || c;
+}
+
+search.addEventListener('input', e => { activeQuery = e.target.value; renderResources(); });
+
+filterTags.addEventListener('click', e => {
+  if (e.target.classList.contains('filter-tag')) {
+    document.querySelectorAll('.filter-tag').forEach(b => b.classList.remove('active'));
+    e.target.classList.add('active');
+    activeFilter = e.target.dataset.filter;
+    renderResources();
+  }
+});
+
+// HOW DO I render
+document.getElementById('howdoList').innerHTML = howdo.map((h, i) => `
+  <details class="howdo">
+    <summary>
+      <span class="qnum">№ ${String(i+1).padStart(2,'0')}</span>
+      <span class="q">${h.q}</span>
+      <span class="toggle">+</span>
+    </summary>
+    <div class="a">${h.a}</div>
+  </details>
+`).join('');
+
+// ROADMAPS render
+document.getElementById('roadmapsGrid').innerHTML = roadmaps.map(r => `
+  <div class="roadmap">
+    <div class="icon">${r.icon}</div>
+    <h3>${r.title}</h3>
+    <p class="blurb">${r.blurb}</p>
+    <div class="timeline">
+      ${r.steps.map(s => `
+        <div class="step">
+          <div class="yr">${s.yr}</div>
+          <div class="what">${s.what}</div>
+        </div>
+      `).join('')}
+    </div>
+    <div class="clubs">
+      <span class="clubs-label">▸ What to plug into</span>
+      ${r.clubs.map(c => `
+        <div class="club-item"><span class="arrow">→</span><div>${c.link ? `<a href="${c.link}" target="_blank" rel="noopener">${c.name}</a>` : `<span>${c.name}</span>`} <span class="desc">${c.desc}</span></div></div>
+      `).join('')}
+    </div>
+  </div>
+`).join('');
+
+// Initial render
+renderResources();
+
+// ========== CUSTOM CURSOR ==========
+(function() {
+  if (matchMedia('(hover: none), (pointer: coarse)').matches) return;
+  const cursor = document.getElementById('cursorDot');
+  if (!cursor) return;
+
+  let mouseX = -100, mouseY = -100;
+  let cursorX = -100, cursorY = -100;
+  let raf = null;
+
+  document.addEventListener('mousemove', e => {
+    mouseX = e.clientX;
+    mouseY = e.clientY;
+  });
+  document.addEventListener('mouseleave', () => cursor.classList.add('cursor-hidden'));
+  document.addEventListener('mouseenter', () => cursor.classList.remove('cursor-hidden'));
+
+  function tick() {
+    cursorX += (mouseX - cursorX) * 0.20;
+    cursorY += (mouseY - cursorY) * 0.20;
+    cursor.style.transform = `translate3d(${cursorX}px, ${cursorY}px, 0)`;
+    raf = requestAnimationFrame(tick);
+  }
+  tick();
+
+  // Hover-grow on interactive elements (event delegation)
+  const interactiveSel = 'a, button, summary, .filter-tag, .roadmap, .resource, .gov-item, .notes-grid .note';
+  document.body.addEventListener('mouseover', e => {
+    if (e.target.closest && e.target.closest(interactiveSel)) {
+      cursor.classList.add('cursor-hover');
+    }
+  });
+  document.body.addEventListener('mouseout', e => {
+    const from = e.target.closest && e.target.closest(interactiveSel);
+    const to = e.relatedTarget && e.relatedTarget.closest && e.relatedTarget.closest(interactiveSel);
+    if (from && !to) cursor.classList.remove('cursor-hover');
+  });
+})();
+
+// ========== SCROLL PROGRESS ==========
+(function() {
+  const bar = document.getElementById('scrollProgress');
+  if (!bar) return;
+  let ticking = false;
+  function update() {
+    const max = document.documentElement.scrollHeight - window.innerHeight;
+    const pct = max > 0 ? Math.min(1, Math.max(0, window.scrollY / max)) : 0;
+    bar.style.transform = `scaleX(${pct})`;
+    ticking = false;
+  }
+  function onScroll() {
+    if (!ticking) {
+      requestAnimationFrame(update);
+      ticking = true;
+    }
+  }
+  update();
+  window.addEventListener('scroll', onScroll, { passive: true });
+  window.addEventListener('resize', onScroll, { passive: true });
+})();
+
+// ========== SCROLL REVEAL ==========
+(function() {
+  const targets = document.querySelectorAll('.reveal, .stagger-children');
+  if (!('IntersectionObserver' in window)) {
+    targets.forEach(el => el.classList.add('in-view'));
+    return;
+  }
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (!entry.isIntersecting) return;
+      const el = entry.target;
+      el.classList.add('in-view');
+      // Once stagger animation finishes, drop the class so future renders
+      // (e.g. resource grid filter changes) don't get stuck invisible.
+      if (el.classList.contains('stagger-children')) {
+        setTimeout(() => el.classList.remove('stagger-children'), 1200);
+      }
+      observer.unobserve(el);
+    });
+  }, { threshold: 0.05, rootMargin: '0px 0px -8% 0px' });
+  targets.forEach(el => observer.observe(el));
+})();
+</script>
+</body>
+</html>
